@@ -8,14 +8,12 @@ To compile:
 gfortran 'filename'.f90 -o 'exename'
 ```
 
-Replace `'filename'` with your Fortran source file and `'exename'` with your desired executable name.
-
 To run:
 
 ```bash
 ./'exename'
 ```
-
+Replace `'filename'` with your Fortran source file and `'exename'` with your desired executable name.
 
 ## Homework Assignments
 
