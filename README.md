@@ -18,5 +18,7 @@ Replace `'filename'` with your Fortran source file and `'exename'` with your des
 ## Homework Assignments
 
 **1st HW**
+- `hw_1.txt` 
 - `factorial_overflow.f90`
 - `precision.f90`
+
