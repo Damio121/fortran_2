@@ -1,0 +1,17 @@
+Homework 1
+
+Task 1 - Factorial overflow
+
+My factorial function started having problems at n=21
+
+Task 2 - Loss of significance
+
+The small number lost significance at 3.03983683E-08
+
+
+Task 3 - review
+
+integer types suffer from overflow, while real numbers have floating point problems
+i think the overflow is a much more dangerous problem in science, because it leads to BIG numerical mistakes.
+But maybe I'm wrong :D
+
