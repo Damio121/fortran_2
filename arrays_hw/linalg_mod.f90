@@ -1,4 +1,4 @@
-module linalg
+module linalg_mod
   use types
   implicit none
 
@@ -68,4 +68,4 @@ contains
 
   end subroutine diag_matrix
 
-end module linalg
+end module linalg_mod
