@@ -29,6 +29,18 @@ module objects
 
 
 
+  interface area
+    module procedure area_wrap
+  end interface
+
+
+  interface perimeter
+    module procedure perimeter_wrap
+  end interface
+
+! ===========================================
+
+
   type, extends(shape) :: rectangle
     real(kind=rkind) :: width, height
   contains
@@ -58,23 +70,6 @@ module objects
   end type quadangle_xy
 
 
-! =======================================================
-
-  type :: vector2d
-    real (kind=rkind) :: x, y
-  contains
-    procedure :: norm => vector2d_norm
-    procedure :: sum => vector2d_sum
-  end type vector2d
-
-
-  type, extends(vector2d) :: vector3d
-    real (kind=rkind) :: z
-  contains
-    procedure :: norm => vector3d_norm
-  end type vector3d
-
-
 
 
 ! ===========================================================
@@ -82,33 +77,6 @@ module objects
 
 contains
 
-
-
-  function vector2d_norm(self) result(val)
-    class(vector2d), intent (in) :: self
-    real(kind=rkind) :: val
-    val = sqrt((self%x)**2 + (self%y)**2)
-  end function
-
-
-  function vector3d_norm(self) result(val)
-    class(vector3d), intent (in) :: self
-    real (kind=rkind) :: val
-    val = sqrt((self%x)**2 + (self%y)**2 + (self%z)**2)
-  end function
-
-  function vector2d_sum (self, v2) result(v_sum)
-
-    class(vector2d), intent (in) :: self
-    class(vector2d), intent (in) :: v2
-    type(vector2d) :: v_sum
-
-    v_sum%x = (self%x + v2%x)
-    v_sum%y = (self%y + v2%y)
-
-  end function
-
-! ==================================================
 
   function rectangle_area(self) result(ar)
     class(rectangle), intent(in) :: self
@@ -169,5 +137,27 @@ contains
        & sqrt((self%x1-self%x4)**2 + (self%y1-self%y4)**2))
 
   end function xyquadangle_perimeter
+
+
+
+! ==========================================
+
+  function area_wrap(this_shape) result(res)
+    class(shape), intent(in) :: this_shape
+    real(kind=rkind) :: res
+
+    res = this_shape%area()
+
+  end function
+
+
+  function perimeter_wrap(this_shape) result(res)
+    class(shape), intent(in) :: this_shape
+    real(kind=rkind) :: res
+
+    res = this_shape%perimeter()
+
+  end function
+
 
 end module objects

@@ -2,14 +2,9 @@ program main
 
   use types
   use objects
-  use objects_3d
   implicit none
 
 
-  type(vector2d) :: v
-  type(vector2d) :: v2
-  type(vector2d) :: v_sum
-  type(vector3d) :: u
 
   class(shape), allocatable :: s
   type(right_triangle) :: t
@@ -18,46 +13,8 @@ program main
   type(quadangle_xy) :: q
   integer(kind=ikind) :: user_choice
 
-  class(solid), allocatable :: s3
-  type(tetrahedron_xyz) :: t3
-  integer(kind=ikind) :: user_choice_3d
 
 ! ==============================================
-
-  v%x = 3.0_rkind
-  v%y = 4.0_rkind
-
-  v2%x = 3.0_rkind
-  v2%y = 2.0_rkind
-
-  print *, "norm (v) = ", v%norm()
-
-  u%x = 3.0_rkind
-  u%y = 4.0_rkind
-  u%z = 5.0_rkind
-
-  print *, "norm (u) = ", u%norm()
-
-
-  v_sum = v%sum(v2)
-  print *, v_sum%x, v_sum%y
-
-! ==============================================
-
-  t3%x1 = 0
-  t3%x2 = 0
-  t3%x3 = 1
-  t3%x4 = 1
-
-  t3%y1 = 0
-  t3%y2 = 1
-  t3%y3 = 0
-  t3%y4 = 1
-
-  t3%z1 = 0
-  t3%z2 = 1
-  t3%z3 = 1
-  t3%z4 = 0
 
   q%x1 = 0
   q%x2 = 0
@@ -110,21 +67,9 @@ program main
   end if
 
 
-  print *, "Area = ", s%area()
-  print *, "Perimeter = ", s%perimeter()
+  print *, "Area = ", area(s)
+  print *, "Perimeter = ", perimeter(s)
 
-! ==========================================================
 
-  print *, "Choose solid: 1 = tetrahedron_xyz"
-  read(*,*) user_choice_3d
-
-  if (user_choice_3d == 1) then
-      allocate(s3, source=t3)
-
-  end if
-
-  print *, "Volume = ", s3%volume()
-
-! =======================================================
 
 end program main
